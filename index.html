@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Assessment Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4eae0;
+            color: #4b3832;
+        }
+        h1 {
+            text-align: center;
+            color: #8e6e53;
+            font-family: 'Georgia', serif;
+        }
+        h2 {
+            color: #4b3832;
+            border-bottom: 2px solid #8e6e53;
+            padding-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #c2b280;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .score-box {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #6f4e37;
+        }
+        input[type="text"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #d2b48c;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #fff5e6;
+            color: #4b3832;
+        }
+        input[type="file"] {
+            padding: 10px;
+            border: 1px solid #d2b48c;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            background-color: #fff5e6;
+            color: #4b3832;
+        }
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #8e6e53;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #6f4e37;
+        }
+        p {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-style: italic;
+            color: #6f4e37;
+        }
+    </style>
+</head>
+<body>
+    <h1>Supplier Assessment Form (SAF) for CAPEX and MRO - Version 1</h1>
+    <p>Each section will be scored on a scale of 1-5, where 1 is poor and 5 is excellent. The maximum total score is 45.</p>
+
+    <form id="safForm">
+        <!-- Section 1: Supplier Information -->
+        <div class="section" id="section1">
+            <h2>Section 1: Supplier Information (Score: <span id="score1">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="supplierName">Supplier Name:</label>
+                <input type="text" id="supplierName" name="supplierName" oninput="updateScore(1)">
+            </div>
+            <div class="score-box">
+                <label for="supplierLocation">Supplier Location:</label>
+                <input type="text" id="supplierLocation" name="supplierLocation" oninput="updateScore(1)">
+            </div>
+            <div class="score-box">
+                <label for="goodsServices">Type of Goods/Services Provided:</label>
+                <input type="text" id="goodsServices" name="goodsServices" oninput="updateScore(1)">
+            </div>
+            <div class="score-box">
+                <label for="yearsInBusiness">Years in Business:</label>
+                <input type="text" id="yearsInBusiness" name="yearsInBusiness" oninput="updateScore(1)">
+            </div>
+        </div>
+
+        <!-- Section 2: Financial Stability -->
+        <div class="section" id="section2">
+            <h2>Section 2: Financial Stability (Score: <span id="score2">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="annualRevenue">Annual Revenue:</label>
+                <input type="text" id="annualRevenue" name="annualRevenue" oninput="updateScore(2)">
+            </div>
+            <div class="score-box">
+                <label for="financialHealth">Financial Health Score (if available):</label>
+                <input type="text" id="financialHealth" name="financialHealth" oninput="updateScore(2)">
+            </div>
+            <div class="score-box">
+                <label for="creditRating">Credit Rating (if available):</label>
+                <input type="text" id="creditRating" name="creditRating" oninput="updateScore(2)">
+            </div>
+        </div>
+
+        <!-- Section 3: Quality Assurance -->
+        <div class="section" id="section3">
+            <h2>Section 3: Quality Assurance (Score: <span id="score3">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="qms">Does the supplier have a Quality Management System (QMS)? If yes, please provide details:</label>
+                <textarea id="qms" name="qms" rows="3" oninput="updateScore(3)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="qualityCertifications">Any industry quality certifications (e.g., ISO 9001)? If yes, please provide details:</label>
+                <textarea id="qualityCertifications" name="qualityCertifications" rows="3" oninput="updateScore(3)"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 4: Delivery & Service -->
+        <div class="section" id="section4">
+            <h2>Section 4: Delivery & Service (Score: <span id="score4">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="deliveryRate">On-Time Delivery Rate:</label>
+                <input type="text" id="deliveryRate" name="deliveryRate" oninput="updateScore(4)">
+            </div>
+            <div class="score-box">
+                <label for="slaAdherence">Service Level Agreement (SLA) Adherence Rate:</label>
+                <input type="text" id="slaAdherence" name="slaAdherence" oninput="updateScore(4)">
+            </div>
+            <div class="score-box">
+                <label for="afterSalesSupport">After-Sales Support Policy:</label>
+                <textarea id="afterSalesSupport" name="afterSalesSupport" rows="3" oninput="updateScore(4)"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 5: Sustainability & Social Responsibility -->
+        <div class="section" id="section5">
+            <h2>Section 5: Sustainability & Social Responsibility (Score: <span id="score5">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="sustainabilityPolicy">Does the supplier have a sustainability policy? If yes, please provide details:</label>
+                <textarea id="sustainabilityPolicy" name="sustainabilityPolicy" rows="3" oninput="updateScore(5)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="environmentalCertifications">Any recognized environmental certifications (e.g., ISO 14001)? If yes, please provide details:</label>
+                <textarea id="environmentalCertifications" name="environmentalCertifications" rows="3" oninput="updateScore(5)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="laborLaws">Does the supplier adhere to labor laws and human rights standards?</label>
+                <textarea id="laborLaws" name="laborLaws" rows="3" oninput="updateScore(5)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="codeOfConduct">Does the supplier have a General Company Code of Conduct, a Supplier Code of Conduct, and a Sustainability Roadmap/Strategy/Policy at the company level? If yes, please provide details and upload them for review:</label>
+                <textarea id="codeOfConduct" name="codeOfConduct" rows="3" oninput="updateScore(5)"></textarea>
+                <input type="file" id="uploadCodeOfConduct" name="uploadCodeOfConduct" oninput="updateScore(5)">
+            </div>
+        </div>
+
+        <!-- Section 6: Innovation & Technological Capabilities -->
+        <div class="section" id="section6">
+            <h2>Section 6: Innovation & Technological Capabilities (Score: <span id="score6">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="rndInvestment">Does the supplier invest in R&D? If yes, please provide details:</label>
+                <textarea id="rndInvestment" name="rndInvestment" rows="3" oninput="updateScore(6)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="patentedTechnologies">Any patented technologies or unique capabilities? If yes, please provide details:</label>
+                <textarea id="patentedTechnologies" name="patentedTechnologies" rows="3" oninput="updateScore(6)"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 7: Risk Management -->
+        <div class="section" id="section7">
+            <h2>Section 7: Risk Management (Score: <span id="score7">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="bcp">Does the supplier have a Business Continuity Plan (BCP)? If yes, please provide details:</label>
+                <textarea id="bcp" name="bcp" rows="3" oninput="updateScore(7)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="cybersecurity">Does the supplier have cybersecurity measures in place? If yes, please provide details:</label>
+                <textarea id="cybersecurity" name="cybersecurity" rows="3" oninput="updateScore(7)"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 8: JDE Peet's MOS Requirements -->
+        <div class="section" id="section8">
+            <h2>Section 8: JDE Peet's MOS Requirements (Score: <span id="score8">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="jdeAdherence">Does the supplier adhere to the JDE Global Manufacturing Continuous Improvement program?</label>
+                <textarea id="jdeAdherence" name="jdeAdherence" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="mosTraining">Has the supplier received training on MOS tools and standards?</label>
+                <textarea id="mosTraining" name="mosTraining" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="improvementAreas">Does the supplier proactively identify areas for improvement?</label>
+                <textarea id="improvementAreas" name="improvementAreas" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="zeroDefect">Does the supplier foster an improvement, zero defect mindset and proactive food safety quality culture within their company?</label>
+                <textarea id="zeroDefect" name="zeroDefect" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="robustRelationships">Can the supplier demonstrate robust relationships with all relevant business partners inside and outside R&D, including Operations, and Procurement?</label>
+                <textarea id="robustRelationships" name="robustRelationships" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="leadProjects">Is the supplier willing to lead projects linked to improvement and standardization including technology and digital applications?</label>
+                <textarea id="leadProjects" name="leadProjects" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="travelWillingness">Is the supplier willing to travel between various manufacturing locations for 30 to 40% of the time?</label>
+                <textarea id="travelWillingness" name="travelWillingness" rows="3" oninput="updateScore(8)"></textarea>
+            </div>
+        </div>
+
+        <!-- Section 9: CIDB Malaysia Requirements -->
+        <div class="section" id="section9">
+            <h2>Section 9: CIDB Malaysia Requirements (Score: <span id="score9">0</span> out of 5)</h2>
+            <div class="score-box">
+                <label for="cidbScore">Does the supplier have a valid CIDB SCORE (Contractor Competency and Capability Rating) with a minimum of three stars?</label>
+                <textarea id="cidbScore" name="cidbScore" rows="3" oninput="updateScore(9)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="malaysianRepresentative">Is there at least one Malaysian citizen named as the company representative(s) in the SPKKA?</label>
+                <textarea id="malaysianRepresentative" name="malaysianRepresentative" rows="3" oninput="updateScore(9)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="cmqs">Does the supplier have a valid Contractor’s Quality Management System (CMQS) or ISO 9001:2008/2015 certification?</label>
+                <textarea id="cmqs" name="cmqs" rows="3" oninput="updateScore(9)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="cidbRegistration">Is the supplier registered with the CIDB and not currently subject to any disciplinary actions by the CIDB?</label>
+                <textarea id="cidbRegistration" name="cidbRegistration" rows="3" oninput="updateScore(9)"></textarea>
+            </div>
+            <div class="score-box">
+                <label for="shareholders">Do none of the shareholders of the supplier hold more than 5% equity in any other companies that have a valid government employment certificate for local contractor (“SPKK”) or SPKKA?</label>
+                <textarea id="shareholders" name="shareholders" rows="3" oninput="updateScore(9)"></textarea>
+            </div>
+        </div>
+
+        <button type="submit">Submit</button>
+        <button type="button" onclick="generatePDF()">Download PDF</button>
+
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script>
+        function updateScore(section) {
+            let inputs = document.querySelectorAll('#section' + section + ' input, #section' + section + ' textarea');
+            let filled = Array.from(inputs).filter(input => input.value.trim() !== '').length;
+            let score = Math.min(filled, 5);
+            document.getElementById('score' + section).innerText = score;
+        }
+        function generatePDF() {
+            // Initialize jsPDF
+            const doc = new jsPDF();
+
+            // Add title
+            doc.setFontSize(20);
+            doc.text('Supplier Assessment Form', 10, 20);
+
+            // Add section scores and responses
+            const sections = document.querySelectorAll('.section');
+            let yPosition = 40;
+
+            sections.forEach((section, index) => {
+                // Get section title
+                const sectionTitle = section.querySelector('h2').innerText;
+                // Get section score
+                const score = section.querySelector('span').innerText;
+                // Add section title and score to PDF
+                doc.setFontSize(16);
+                doc.text(`${sectionTitle} (Score: ${score} out of 5)`, 10, yPosition);
+                yPosition += 10;
+                // Get section responses
+                const responses = section.querySelectorAll('input[type="text"], input[type="file"], textarea');
+                responses.forEach(response => {
+                    // Add response label and value to PDF
+                    const label = response.previousElementSibling.innerText;
+                    const value = response.value || 'N/A';
+                    doc.setFontSize(12);
+                    doc.text(`${label}: ${value}`, 15, yPosition);
+                    yPosition += 7;
+                });
+                yPosition += 10; // Add space between sections
+            });
+
+            // Save the PDF
+            doc.save('supplier_assessment_form.pdf');
+        }
+    </script>
+</body>
+</html>
